@@ -22,7 +22,7 @@ Sample Swift 4.2 project with RealmSwift 3.13.1
     ```
 3. Create new Playground (Alt + Shift + Cmd + N) to create a new Playgorund under your workspace.
   
-    ![Add Play Ground](/RealmExploration/screenshots/AddPlayGround.png)    
+  ![Add Play Ground](https://github.com/sauvikdolui/RealmExploration/screenshots/AddPlayGround.png)    
 
 4. On play ground paste the following sample code [RealmSwift Guide](https://realm.io/docs/swift/latest/).
     ```swift
@@ -77,5 +77,5 @@ Sample Swift 4.2 project with RealmSwift 3.13.1
     }
     ```
 
-![Playing with RealmSwift](/RealmExploration/screenshots/RealmSwiftOnPlayGround.png)
+![Playing with RealmSwift](https://github.com/sauvikdolui/RealmExploration/screenshots/RealmSwiftOnPlayGround.png)
 
