@@ -1,4 +1,3 @@
-import UIKit
 import XCPlayground
 import PlaygroundSupport
 import RealmSwift
