@@ -3,6 +3,11 @@ Sample Swift 4.2 project with RealmSwift 3.13.1
 
 *This is a sample demo project to explore RealmSwift*
 
+
+## NOTE: No such module `RealmSwift` Issue 
+
+Make sure you build your target after installing `RealmSwift` and before creating the `Playground`.
+ 
 ### Steps to start  playing with RealmSwift on Swift Playground.
 
 1. Create a Single View Application on Xcode.
