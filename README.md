@@ -1,9 +1,9 @@
 # RealmExploration
 Sample Swift 4.2 project with RealmSwift 3.13.1
 
-### This is a sample demo project to explore RealmSwift
+*This is a sample demo project to explore RealmSwift*
 
-### How to play with RealmSwift on Swift Playground?
+### Steps to start  playing with RealmSwift on Swift Playground.
 
 1. Create a Single View Application on Xcode.
 2. Install RealmSwift using cocoapods. Podfile Example
@@ -21,7 +21,9 @@ Sample Swift 4.2 project with RealmSwift 3.13.1
     end
     ```
 3. Create new Playground (Alt + Shift + Cmd + N) to create a new Playgorund under your workspace.
-      // TODO: Add Screenshot here
+  
+    ![Add Play Ground](/RealmExploration/screenshots/AddPlayGround.png)    
+
 4. On play ground paste the following sample code [RealmSwift Guide](https://realm.io/docs/swift/latest/).
     ```swift
     import XCPlayground
@@ -74,4 +76,6 @@ Sample Swift 4.2 project with RealmSwift 3.13.1
         }
     }
     ```
-    // TODO: Add Screenshot here
+
+![Playing with RealmSwift](/RealmExploration/screenshots/RealmSwiftOnPlayGround.png)
+
