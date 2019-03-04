@@ -1,50 +1,42 @@
+import UIKit
 import XCPlayground
 import PlaygroundSupport
 import RealmSwift
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 
+// Why `@objc`?
+// ============
+// `Object` is coming from
+// `@objc(RealmSwiftObject) open class Object : RLMObjectBase, ThreadConfined, RealmCollectionValue`
+// and `RLMObjectBase` --> `NSObject`
+// Need to use Objective-C runtime to observe changes made on properties. var properties are only available with Obj-C run time?
 
-// Define your models like regular Swift classes
+
+
+// Why `dynamic`?
+// ==============
+// Changes made on property values are to be observed from `Realm` core to save back in DB.
+// Needs to support dynamic access with KVO
+
+
+
 class Dog: Object {
-    @objc dynamic var name = ""
-    @objc dynamic var age = 0
+    @objc dynamic var name: String = ""
+    @objc dynamic var age: Int = 0
 }
+
 class Person: Object {
-    @objc dynamic var name = ""
-    @objc dynamic var picture: Data? = nil // optionals supported
+    @objc dynamic var name: String = ""
+    @objc dynamic var picture: Data? = nil
     let dogs = List<Dog>()
 }
 
-// Use them like regular Swift objects
+// Let's create a dog
 let myDog = Dog()
 myDog.name = "Rex"
 myDog.age = 1
-print("name of dog: \(myDog.name)")
 
-// Get the default Realm
-let realm = try! Realm()
+print(myDog.name)
 
-// Query Realm for all dogs less than 2 years old
-let puppies = realm.objects(Dog.self).filter("age < 2")
-puppies.count // => 0 because no dogs have been added to the Realm yet
-
-// Persist your data easily
-try! realm.write {
-    realm.add(myDog)
-}
-
-// Queries are updated in realtime
-puppies.count // => 1
-
-// Query and update from any thread
-DispatchQueue(label: "background").async {
-    autoreleasepool {
-        let realm = try! Realm()
-        let theDog = realm.objects(Dog.self).filter("age == 1").first
-        try! realm.write {
-            theDog!.age = 3
-        }
-    }
-}
 

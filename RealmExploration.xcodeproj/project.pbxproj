@@ -12,6 +12,7 @@
 		B82DA56D222CE10C00B1F9F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B82DA56B222CE10C00B1F9F4 /* Main.storyboard */; };
 		B82DA56F222CE10D00B1F9F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82DA56E222CE10D00B1F9F4 /* Assets.xcassets */; };
 		B82DA572222CE10D00B1F9F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B82DA570222CE10D00B1F9F4 /* LaunchScreen.storyboard */; };
+		B82DA57B222D0AC400B1F9F4 /* RealmExploration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82DA57A222D0AC400B1F9F4 /* RealmExploration.swift */; };
 		C50EB1E97F26678B68BC5A60 /* Pods_RealmExploration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC5DD49203C3038844FBD72 /* Pods_RealmExploration.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		B82DA571222CE10D00B1F9F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B82DA573222CE10D00B1F9F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B82DA579222CF18400B1F9F4 /* RealmPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = RealmPlayground.playground; path = Playgrounds/RealmPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B82DA57A222D0AC400B1F9F4 /* RealmExploration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmExploration.swift; sourceTree = "<group>"; };
 		CBA2D1135AC327B9C8CCD21B /* Pods-RealmExploration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmExploration.release.xcconfig"; path = "Target Support Files/Pods-RealmExploration/Pods-RealmExploration.release.xcconfig"; sourceTree = "<group>"; };
 		CEC5DD49203C3038844FBD72 /* Pods_RealmExploration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmExploration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -78,6 +80,7 @@
 				B82DA56E222CE10D00B1F9F4 /* Assets.xcassets */,
 				B82DA570222CE10D00B1F9F4 /* LaunchScreen.storyboard */,
 				B82DA573222CE10D00B1F9F4 /* Info.plist */,
+				B82DA57A222D0AC400B1F9F4 /* RealmExploration.swift */,
 			);
 			path = RealmExploration;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			files = (
 				B82DA56A222CE10C00B1F9F4 /* ViewController.swift in Sources */,
 				B82DA568222CE10C00B1F9F4 /* AppDelegate.swift in Sources */,
+				B82DA57B222D0AC400B1F9F4 /* RealmExploration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

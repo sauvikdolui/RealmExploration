@@ -1,0 +1,137 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 ArialMT;\f2\fnil\fcharset0 Consolas;
+\f3\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red52\green0\blue71;\red255\green255\blue255;\red27\green29\blue31;
+\red203\green35\blue57;\red27\green31\blue34;\red91\green40\blue180;\red255\green255\blue255;\red30\green32\blue40;
+\red178\green24\blue137;\red131\green192\blue87;\red219\green44\blue56;\red65\green182\blue69;\red0\green160\blue190;
+\red120\green109\blue196;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c26879\c5470\c34975;\cssrgb\c100000\c100000\c100000;\cssrgb\c14118\c15294\c16078;
+\cssrgb\c84314\c22745\c28627;\cssrgb\c14118\c16078\c18039;\cssrgb\c43529\c25882\c75686;\csgenericrgb\c100000\c100000\c100000;\csgenericrgb\c11800\c12500\c15700;
+\csgenericrgb\c69800\c9500\c53600;\csgenericrgb\c51200\c75400\c34300;\csgenericrgb\c85900\c17100\c21900;\csgenericrgb\c25500\c71400\c27000;\csgenericrgb\c0\c62600\c74600;
+\csgenericrgb\c46900\c42600\c77000;\cssrgb\c100000\c100000\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww31380\viewh14440\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 Ask for version of RealSwift we have used for GO, \
+\
+latest one is 3.13.1 Jan 4, 19\
+3.12 Nov 27, 2018\
+
+\b 3.11 Oct 5, 2018\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 3.10 Sept 20, 2018\
+3.9 Sept 11, 2018\
+\
+\
+DYNMIC VAR\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+
+\b0 Necessary for all properties,  they needs to be accessors for the underlying DB data\
+\
+Two exception : List and RealmOptional (These property types are Generic in nature and dynamic behaviour is not supported in Swift) \
+Dynamic Generic Properties (Swift Feature missing in Obj-C) allows you to create List and RealmOptionals\
+\
+
+\b RealmOptional and List are to be declared as let variables.\
+Other primitive variables are to be declared as @objc dynamic var \'97> Changes made on these properties are to be managed in Objective-C Run time\
+\
+
+\b0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Realm to be notified of changes to model variables, and consequently reflect them to the database.\
+
+\f0\fs28 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 Object \'97> 
+\f2\fs24 \cf5 \expnd0\expndtw0\kerning0
+@interface\cf6  \cf7 RLMObjectBase\cf6  : \cf7 NSObject Written in Objective-c++\
+
+\f0\fs28 \cf0 \kerning1\expnd0\expndtw0  As each model is inherited from Object, so total env is in Objective C\
+\
+Writing objects\
+=============\
+\
+
+\b\fs34 \
+Type 1: 
+\b0 using write block
+\fs28 \
+\pard\tx692\pardeftab692\pardirnatural\partightenfactor0
+
+\f3 \cf8 \cb9             \cf10 let\cf8  realm = \cf10 try\cf8  \cf11 Realm\cf8 ()
+\f0\fs24 \cf0 \
+
+\f3\fs28 \cf8             \cf10 let\cf8  puppies = realm.\cf11 objects\cf8 (\cf11 Dog\cf8 .\cf10 self\cf8 ).\cf11 filter\cf8 (\cf12 "age <= 10"\cf8 )
+\f0\fs24 \cf0 \
+
+\f3\fs28 \cf8             \cf13 // Count => 0 as we have not saved any Dog yet
+\f0\fs24 \cf0 \
+
+\f3\fs28 \cf8             \cf14 print\cf8 (\cf12 "Puppies Count rlmQueue Before Write = \cf8 \\\cf12 (\cf8 puppies.\cf11 count\cf12 )"\cf8 )
+\f0\fs24 \cf0 \
+
+\f3\fs28 \cf8             
+\f0\fs24 \cf0 \
+
+\f3\fs28 \cf8             \cf13 // Let's try to save the myDog into currnt realm instance
+\f0\fs24 \cf0 \
+
+\f3\fs28 \cf8             \cf10 try\cf8  realm.\cf11 write\cf8  \{
+\f0\fs24 \cf0 \
+
+\f3\fs28 \cf8                 dog.\cf11 age\cf8  = \cf15 5
+\f0\fs24 \cf0 \
+
+\f3\fs28 \cf8                 realm.\cf11 add\cf8 (dog)
+\f0\fs24 \cf0 \
+
+\f3\fs28 \cf8             \}
+\f0\fs24 \cf0 \
+
+\fs28 \cb1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+
+\b\fs36 Type 2\
+\
+Wrapping write code in-between begin. Write and 
+\b0\fs28 \
+\pard\tx692\pardeftab692\pardirnatural\partightenfactor0
+
+\f3 \cf8 \cb9         \cf13 // Save your object
+\f0\fs24 \cf0 \
+
+\f3\fs28 \cf8         realm.beginWrite()
+\f0\fs24 \cf0 \
+
+\f3\fs28 \cf8         realm.add(mydog)
+\f0\fs24 \cf0 \
+
+\f3\fs28 \cf8         \cf10 try\cf8 ! realm.commitWrite()
+\f0\fs24 \cf0 \
+\cb16 \
+Background App Refresh\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+Both .realm and .realm.lock files are to be downgraded 
+\b NSFileProtectionKey\
+\
+NSFileprotectionCompleteUntilFirstUserAuthentication \
+
+\b0 Here we can the Realms inbuilt encryption mechanism to ensure file safety.\
+\
+\
+Codebase to do that\
+\
+\
+// Where to store the Realm? 
+\b \
+\
+
+\b0 \
+\
+\
+}
